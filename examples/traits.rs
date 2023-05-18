@@ -10,12 +10,18 @@ struct WesterUnion{
     verification:u8,
 }
 
-struct BitCredit{
-    btnnumber: u32,
+struct BitCredit<T>{
+    pub btnnumber: T,
 }
 impl BitCredit{
     fn test(&self){
 
+    }
+}
+
+impl Into<BitCredit> for u8 {
+    fn into(self) -> BitCredit {
+        BitCredit { btnnumber: self as u32 }
     }
 }
 

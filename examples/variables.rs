@@ -1,16 +1,36 @@
-#![allow(unused)] // silence unused warnings while exploring (to comment out)
+#![allow(unused)]
+
+use std::ops::Add;
+
+struct Millimeters(u32);
+struct Meters(u32);
+
+impl Add<Meters> for Millimeters {
+    type Output = Millimeters;
+
+    fn add(self, other: Meters) -> Millimeters {
+        self.0 + (other.0 * 1000);
+    }
+}
+
+
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+}
+
 fn main() {
-    // variables
-    let mut x = 280;
-    println!("value of x: {}", x);
-
-    // Constants
-    const Y: i32 = 222;
-    println!("value of Y {}", Y * 2);
-
-    // variable shadowing
-    let a = "123";
-    let a: i32 = a.parse().unwrap();
-    let result  = a * 3;
-    println!("Value of a: {}", result);
+    let scale = 2;
+    let rect1 = Rectangle {
+        width: dbg!(40 * scale),
+        height: 50,
+    };
+    dbg!(&rect1.area());
 }

@@ -8,7 +8,6 @@ fn main() {
     println!("------");
     numbers.into_iter().filter(|&x| x > 2)
         .for_each(|x| println!("{}", x));
-
     println!("------");
     let number2 = vec![10, 2, 3, 4, 5];
     let sum:i32 = number2.iter().sum();
